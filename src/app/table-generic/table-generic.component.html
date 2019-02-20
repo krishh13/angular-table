@@ -1,52 +1,61 @@
-
 <div>
-  <input type="text" (keyup)='sendSearch($event?.target.value)'>
-
-  <table style ="background-color:lightcoral" align = "center">
-      <thead>
-                 <tr>
-                    <th>Id</th>
-                    <th>Title</th>
-                    <th>URL</th>
-                    <th>ThumbnailUrl</th>
-                    <th>Click to Delete</th>
-                </tr>
-      </thead>
-      <tbody>
-                <tr *ngFor = "let data of productSpirit; let i = index;">
+    <nav>
+        <img src="https://img.icons8.com/ios-glyphs/30/000000/visible.png">
+        <select class="dropdown">
+            <option value= 10>10</option>
+            <option value= 20>20</option>
+            <option value= 50>30</option>
+      </select>
+        <app-navbar style=" display: inline-block;"></app-navbar>
+        <img src="https://img.icons8.com/ios-glyphs/30/000000/search.png">
+        <input type="text" placeholder="search" (keyup)='sendSearch($event?.target.value)'>
+    </nav>
+    <br/>
+    <table align="center">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>URL</th>
+                <th>ThumbnailUrl</th>
+                <th>Click to Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of productSpirit; let i = index;">
                 <td>{{data.id}}</td>
                 <td>{{data.title}}</td>
-                <td>{{data.url}}</td>                       
-               <td>{{data.thumbnailUrl}}</td>
-               <!-- <td><button style='padding:10px;' (click)="deleteRow(i)">Delete Row </button></td> -->
-               <td><button style='padding:10px;' (click)="sendProduct(i)">Delete Row </button></td>
-                </tr>     
-                
-                <tr *ngFor = "let data2 of productSouthwest">
-                    <td>{{data2.id}}</td>
-                    <td>{{data2.title}}</td>
-                    <td>{{data2.url}}</td>                       
-                     <td>{{data2.thumbnailUrl}}</td>
-                     <td><button style='padding:10px;' (click)="sendProduct(i)">Delete Row </button></td>
-                </tr>
+                <td>{{data.url}}</td>
+                <td>{{data.thumbnailUrl}}</td>
+                <!-- <td><button style='padding:10px;' (click)="deleteRow(i)">Delete Row </button></td> -->
+                <td><button style='padding:10px;' (click)="sendProduct(i)">Delete Row </button></td>
+            </tr>
+            <!-- *****we sre using only spirit component**** -->
+            <!-- <tr *ngFor="let data2 of productSouthwest">
+                <td>{{data2.id}}</td>
+                <td>{{data2.title}}</td>
+                <td>{{data2.url}}</td>
+                <td>{{data2.thumbnailUrl}}</td>
+                <td><button style='padding:10px;' (click)="sendProduct(i)">Delete Row </button></td>
+            </tr>
 
-                <tr *ngFor = "let data3 of productDelta">
-                    <td>{{data3.id}}</td>
-                    <td>{{data3.title}}</td>
-                    <td>{{data3.url}}</td>                       
-                     <td>{{data3.thumbnailUrl}}</td>
-                     <td><button style='padding:10px;' (click)="sendProduct(i)">Delete Row </button></td>
-                </tr>
+            <tr *ngFor="let data3 of productDelta">
+                <td>{{data3.id}}</td>
+                <td>{{data3.title}}</td>
+                <td>{{data3.url}}</td>
+                <td>{{data3.thumbnailUrl}}</td>
+                <td><button style='padding:10px;' (click)="sendProduct(i)">Delete Row </button></td>
+            </tr>
 
-                <tr *ngFor = "let data4 of productAmerican">
-                    <td>{{data4.id}}</td>
-                    <td>{{data4.title}}</td>
-                    <td>{{data4.url}}</td>                       
-                    <td>{{data4.thumbnailUrl}}</td>
-                    <td><button style='padding:10px;' (click)="sendProduct(i)">Delete Row </button></td>
-                </tr>
-              </tbody>
-  </table>
+            <tr *ngFor="let data4 of productAmerican">
+                <td>{{data4.id}}</td>
+                <td>{{data4.title}}</td>
+                <td>{{data4.url}}</td>
+                <td>{{data4.thumbnailUrl}}</td>
+                <td><button style='padding:10px;' (click)="sendProduct(i)">Delete Row </button></td>
+            </tr> -->
+        </tbody>
+    </table>
 </div>
 
 <!-- 

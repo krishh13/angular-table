@@ -3,21 +3,37 @@
     height: 1000px;
 } */
 
-
-
-
-table, td, th {  
+table,
+td,
+th {
     border: 1px solid grey;
     text-align: left;
-  }
-  table {
+}
+
+table {
     border-collapse: collapse;
     align-content: center;
-  }
-  th{
+}
+
+th {
     padding: 12px;
-  }
-   td {
-    color:white;
+}
+
+td {
     padding: 10px;
-  }
+}
+
+input {
+    float: right;
+}
+
+.dropdown {
+    border: 0px;
+    outline: 0px;
+    margin: 15px;
+    background-color: rgb(190, 178, 178);
+}
+
+nav {
+    background-color: rgb(190, 178, 178);
+}

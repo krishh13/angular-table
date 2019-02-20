@@ -7,9 +7,10 @@ import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 })
 export class TableGenericComponent implements OnInit {
   @Input() productSpirit: ProductType[];
-  @Input() productSouthwest: ProductType;
-  @Input() productDelta: ProductType;
-  @Input() productAmerican: ProductType;
+  // ***** we are working on pagenation with spirit component only*****
+  // @Input() productSouthwest: ProductType;
+  // @Input() productDelta: ProductType;
+  // @Input() productAmerican: ProductType;
   @Output() clickOnProduct: EventEmitter<any> = new EventEmitter();
   @Output() searchData = new EventEmitter();
 

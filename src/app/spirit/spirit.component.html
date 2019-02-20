@@ -1,12 +1,8 @@
-
 <!-- <div class="container">
   spirit works!
   <app-american></app-american>
   </div> -->
 
 
-    <h1 style = "text-align:center; color:whitesmoke"> Spirit Products </h1>  
-    <app-table-generic [productSpirit]="filterSpirit" (clickOnProduct)="deleteRow($event)" (searchData) = "searchInput($event)" ></app-table-generic>
-
-
-
+<h1 style="text-align:center;"> Spirit Products </h1>
+<app-table-generic [productSpirit]="filterSpirit" (clickOnProduct)="deleteRow($event)" (searchData)="searchInput($event)"></app-table-generic>
