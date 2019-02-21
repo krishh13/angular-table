@@ -11,21 +11,26 @@ export class TableGenericComponent implements OnInit {
   @Input() productDelta: ProductType;
   @Input() productAmerican: ProductType;
   @Output() clickOnProduct: EventEmitter<any> = new EventEmitter();
-  @Output() searchData = new EventEmitter();
+  // @Output() searchData = new EventEmitter();
 
 
   sendProduct(i) {
     this.clickOnProduct.emit(i);
     }
 
+
+    // getTotalDetailsCount(): number {
+    //   return this.productSpirit.length;
+    // }
+
     // deleteRow(i) {
     //   this.productSpirit.splice(i, 1);
     // }
 
-    sendSearch(val) {
-      console.log(val);
-      this.searchData.emit(val);
-    }
+    // sendSearch(val) {
+    //   console.log(val);
+    //   this.searchData.emit(val);
+    // }
 
 
 

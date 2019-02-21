@@ -3,9 +3,7 @@
     height: 1000px;
 } */
 
-
-
-
+/* 
 table, td, th {  
     border: 1px solid grey;
     text-align: left;
@@ -20,4 +18,21 @@ table, td, th {
    td {
     color:white;
     padding: 10px;
-  }
+  } */
+
+  table {
+    color:  rgb(235, 226, 211);;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
+    border-collapse: collapse;
+}
+
+td {
+    border: 1px solid  rgb(235, 226, 211);;
+    padding:5px;
+}
+
+th{
+    border: 1px solid rgb(235, 226, 211);
+    padding:5px;
+}

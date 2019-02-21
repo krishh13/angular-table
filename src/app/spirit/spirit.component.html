@@ -4,9 +4,15 @@
   <app-american></app-american>
   </div> -->
 
+<h1 style = "text-align:center; color:whitesmoke"> Spirit Products </h1> 
 
-    <h1 style = "text-align:center; color:whitesmoke"> Spirit Products </h1>  
-    <app-table-generic [productSpirit]="filterSpirit" (clickOnProduct)="deleteRow($event)" (searchData) = "searchInput($event)" ></app-table-generic>
+<app-pagination [productSpirit]="filterSpirit" 
+(searchData) = "searchInput($event)"
+(selectedList) = "selectListShow($event)" 
+[currentRecords] = "getCurrentDetailsCount()"
+[totalRecords] ="getTotalDetailsCount()"></app-pagination>
 
+<!-- <app-table-generic [productSpirit]="filterSpirit" (clickOnProduct)="deleteRow($event)" (searchData) = "searchInput($event)" ></app-table-generic> -->
+<app-table-generic [productSpirit]="filterSpirit" (clickOnProduct)="deleteRow($event)" ></app-table-generic>
 
 

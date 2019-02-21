@@ -1,23 +1,23 @@
 
 <div>
-  <input type="text" (keyup)='sendSearch($event?.target.value)'>
+  <!-- <input type="text" (keyup)='sendSearch($event?.target.value)'> -->
 
-  <table style ="background-color:lightcoral" align = "center">
+  <table style ="background-color:lightcoral; margin:auto" align = "center" >
       <thead>
                  <tr>
                     <th>Id</th>
+                    <th>UserId</th>
                     <th>Title</th>
-                    <th>URL</th>
-                    <th>ThumbnailUrl</th>
+                    <th>Body</th>
                     <th>Click to Delete</th>
                 </tr>
       </thead>
       <tbody>
                 <tr *ngFor = "let data of productSpirit; let i = index;">
                 <td>{{data.id}}</td>
-                <td>{{data.title}}</td>
-                <td>{{data.url}}</td>                       
-               <td>{{data.thumbnailUrl}}</td>
+                <td>{{data.userId}}</td>
+                <td>{{data.title}}</td>                       
+               <td>{{data.body}}</td>
                <!-- <td><button style='padding:10px;' (click)="deleteRow(i)">Delete Row </button></td> -->
                <td><button style='padding:10px;' (click)="sendProduct(i)">Delete Row </button></td>
                 </tr>     

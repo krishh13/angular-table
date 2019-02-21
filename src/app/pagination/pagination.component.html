@@ -1,0 +1,46 @@
+
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<div style= "background: lightgrey">
+<div class ="inline"> 
+  
+  <img class="radioClass" src="https://img.icons8.com/ios-glyphs/30/000000/visible.png">
+  <!-- Drop down functionality -->
+    <select class="dropdown" (change) = "showSelectedAmount($event.target.value)" >
+        <option value= 20>20</option>
+        <option value= 40>40</option>
+        <option value= 60>60</option>
+        <option value= 80>80</option>
+        <option value= 100>100</option>
+    </select>
+
+</div>
+
+<!-- Showing Functionality -->
+<div class ="inline radioClass">
+  <span> Showing {{currentRecords}} of {{totalRecords}} Records </span>
+</div>
+
+<!-- Pagination Functionality -->
+<div class ="inline"> 
+  <ul class="pagination">
+      <li class="page-item " ><a class="page-link" (click)="setActivePaginationPage($event.target.value)">Previous</a></li>
+      <li class="page-item " ><a class="page-link" (click)="setActivePaginationPage($event.target.value)">Next</a></li>
+  </ul>
+</div>
+
+<!-- Search Functionality -->
+<div class ="inline searchInput"> 
+    <span> <input [class.hidden]= "hidden" type="text" (keyup)='sendSearch($event?.target.value)'></span>
+   <button (click) = "displaySearch()"> <img src="https://img.icons8.com/ios-glyphs/30/000000/search.png"> </button> 
+     
+</div>
+</div>
+
+
+
+ 
+<!-- <span class ="radioClass"> Total Details: {{total}} </span> -->

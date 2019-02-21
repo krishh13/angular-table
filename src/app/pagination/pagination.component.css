@@ -1,0 +1,19 @@
+.radioClass {
+    color: black;
+    font-family: italic, Helvetica, sans-serif;
+    font-size: medium;
+    margin: 10px;
+}
+
+.searchInput{
+    float: right;
+}
+
+.inline{
+    display:inline-block;
+    margin: 10px;
+}
+
+.hidden{
+    display:none;
+}
