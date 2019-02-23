@@ -6,13 +6,20 @@
 
 <h1 style = "text-align:center; color:whitesmoke"> Spirit Products </h1> 
 
-<app-pagination [productSpirit]="filterSpirit" 
+<!-- <app-pagination 
+[productSpirit]="filterSpirit" 
 (searchData) = "searchInput($event)"
 (selectedList) = "selectListShow($event)" 
 [currentRecords] = "getCurrentDetailsCount()"
-[totalRecords] ="getTotalDetailsCount()"></app-pagination>
+[totalRecords] ="getTotalDetailsCount()"></app-pagination> -->
+
+
+<app-pagination [productSpirit]="spiritProducts" > </app-pagination>
+
+
+
 
 <!-- <app-table-generic [productSpirit]="filterSpirit" (clickOnProduct)="deleteRow($event)" (searchData) = "searchInput($event)" ></app-table-generic> -->
-<app-table-generic [productSpirit]="filterSpirit" (clickOnProduct)="deleteRow($event)" ></app-table-generic>
+
 
 

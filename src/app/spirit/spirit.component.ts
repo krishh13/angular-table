@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-spirit',
@@ -7,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SpiritComponent implements OnInit {
 
-  filterSpirit: any;
+  // filterSpirit: any;
+
 
   spiritProducts = [
     {
@@ -611,25 +612,29 @@ export class SpiritComponent implements OnInit {
       "body": "cupiditate quo est a modi nesciunt soluta\nipsa voluptas error itaque dicta in\nautem qui minus magnam et distinctio eum\naccusamus ratione error aut"
     },] ;
 
-    deleteRow(value) {
-       this.spiritProducts.splice(value, 1);
-       this.filterSpirit = this.spiritProducts;
-    }
 
-    selectListShow(vale) {
-      console.log(vale);
-      this.filterSpirit = this.spiritProducts;
-      // let selection: any = this.filterSpirit.slice(0,vale);
-      // this.filterSpirit = selection;
-      // return this.filterSpirit;
-      this.filterSpirit = this.filterSpirit.filter((filterSpirit,idx) => idx < vale);
-    }
+// Delete selected row
+    // deleteRow(value) {
+    //    this.spiritProducts.splice(value, 1);
+    //    this.filterSpirit = this.spiritProducts;
+    // }
 
-    searchInput(val: any) {
-      this.filterSpirit = this.spiritProducts.filter((x) => {
-        const filter = Object.keys(x);
-        return filter.some(element => x[element].toString().toLowerCase().trim().indexOf(val.toString().toLowerCase().trim()) !== -1);
-        });
+// Showing selected list of data
+    // selectListShow(vale) {
+    //   console.log(vale);
+    //   this.filterSpirit = this.spiritProducts;
+    //   // let selection: any = this.filterSpirit.slice(0,vale);
+    //   // this.filterSpirit = selection;
+    //   // return this.filterSpirit;
+    //   this.filterSpirit = this.filterSpirit.filter((filterSpirit,idx) => idx < vale);
+    // }
+
+// Search the data on Input value
+    // searchInput(val: any) {
+    //   this.filterSpirit = this.spiritProducts.filter((x) => {
+    //     const filter = Object.keys(x);
+    //     return filter.some(element => x[element].toString().toLowerCase().trim().indexOf(val.toString().toLowerCase().trim()) !== -1);
+    //     });
     //   console.log(val);
     //   if (!val) {
     //    this.filterSpirit = this.spiritProducts;
@@ -639,20 +644,32 @@ export class SpiritComponent implements OnInit {
     //       return filter.some(element => x[element].toString().toLowerCase().trim().indexOf(val.toString().toLowerCase().trim()) !== -1);
     //       });
     // }
+// }
+
+trackbyId(index: number, data: any) {
+return data.id;
 }
 
-getTotalDetailsCount(): number {
-  return this.spiritProducts.length;
-}
+// // TotalRecords
+// getTotalDetailsCount(): number {
+//   return this.spiritProducts.length;
+// }
 
-getCurrentDetailsCount(): number {
-  return this.filterSpirit.length;
-}
+// // CurrentRecords Per Page
+// getCurrentDetailsCount(): number {
+//   return this.filterSpirit.length;
+// }
 
+// recordsPerPage(values) {
+//   console.log(values)
+//   this.filterSpirit = this.spiritProducts.filter((filterSpirit,idx) => idx < values);
+// }
 
   constructor() { }
+
   ngOnInit() {
-    this.filterSpirit = this.spiritProducts.filter((filterSpirit,idx) => idx < 20);
+    // // this.filterSpirit = this.spiritProducts.filter((filterSpirit,idx) => idx < 20);
+    // this.filterSpirit = this.spiritProducts
   }
 
 }

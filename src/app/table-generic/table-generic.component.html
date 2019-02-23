@@ -1,4 +1,6 @@
 
+
+
 <div>
   <!-- <input type="text" (keyup)='sendSearch($event?.target.value)'> -->
 
@@ -13,13 +15,13 @@
                 </tr>
       </thead>
       <tbody>
-                <tr *ngFor = "let data of productSpirit; let i = index;">
+                <tr *ngFor = "let data of productSpi; let i = index; trackBy:trackbyId">
                 <td>{{data.id}}</td>
                 <td>{{data.userId}}</td>
                 <td>{{data.title}}</td>                       
                <td>{{data.body}}</td>
                <!-- <td><button style='padding:10px;' (click)="deleteRow(i)">Delete Row </button></td> -->
-               <td><button style='padding:10px;' (click)="sendProduct(i)">Delete Row </button></td>
+               <td><button style='padding:10px; background-color: black;' (click)="deleteSelected(i)">Delete Row </button></td>
                 </tr>     
                 
                 <tr *ngFor = "let data2 of productSouthwest">
@@ -27,7 +29,7 @@
                     <td>{{data2.title}}</td>
                     <td>{{data2.url}}</td>                       
                      <td>{{data2.thumbnailUrl}}</td>
-                     <td><button style='padding:10px;' (click)="sendProduct(i)">Delete Row </button></td>
+                     <td><button style='padding:10px;'  (click)="sendProduct(i)">Delete Row </button></td>
                 </tr>
 
                 <tr *ngFor = "let data3 of productDelta">

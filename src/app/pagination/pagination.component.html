@@ -1,4 +1,5 @@
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ng2-bootstrap/x.x.x/ng2-bootstrap.min.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
 
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -6,9 +7,8 @@
 
 <div style= "background: lightgrey">
 <div class ="inline"> 
-  
   <img class="radioClass" src="https://img.icons8.com/ios-glyphs/30/000000/visible.png">
-  <!-- Drop down functionality -->
+  <!-- Drop down list functionality -->
     <select class="dropdown" (change) = "showSelectedAmount($event.target.value)" >
         <option value= 20>20</option>
         <option value= 40>40</option>
@@ -16,31 +16,36 @@
         <option value= 80>80</option>
         <option value= 100>100</option>
     </select>
-
 </div>
 
 <!-- Showing Functionality -->
 <div class ="inline radioClass">
-  <span> Showing {{currentRecords}} of {{totalRecords}} Records </span>
+  <span> Showing {{filterSpirit.length}} of {{productSpirit.length}} Records </span>
 </div>
 
 <!-- Pagination Functionality -->
-<div class ="inline"> 
+<!-- <div class ="inline"> 
   <ul class="pagination">
-      <li class="page-item " ><a class="page-link" (click)="setActivePaginationPage($event.target.value)">Previous</a></li>
-      <li class="page-item " ><a class="page-link" (click)="setActivePaginationPage($event.target.value)">Next</a></li>
+      <li class="page-item " ><a href = "javascript:void(0)">{{Previous}}</a></li>
+      <li class="page-item " ><a href = "javascript:void(0)">{{Next}}</a></li>
   </ul>
-</div>
+</div> -->
+<div class="inline">
+       <ul  class="inline pagination" >
+          <li [ngClass]="{'disabled': (currentIndex == 1 || pageNumber == 0)}" ><a  (click)="prevPage()" href="#">Prev</a></li>
+             <li *ngFor="let page of pagesIndex"  [ngClass]="{'active': (currentIndex == page)}">
+                <a (click)="setPage(page)" href="#" >{{page}}</a>
+             </li>
+          <li [ngClass]="{'disabled': (currentIndex == pageNumber || pageNumber == 0)}" ><a   (click)="nextPage()" href="#">Next</a></li>
+      </ul>
+ </div>
+
 
 <!-- Search Functionality -->
 <div class ="inline searchInput"> 
-    <span> <input [class.hidden]= "hidden" type="text" (keyup)='sendSearch($event?.target.value)'></span>
-   <button (click) = "displaySearch()"> <img src="https://img.icons8.com/ios-glyphs/30/000000/search.png"> </button> 
-     
+    <span> <input [class.hidden]= "hidden" type="text" (keyup)='searchInput($event?.target.value)'></span>
+   <button (click) = "displaySearch()"> <img src="https://img.icons8.com/ios-glyphs/30/000000/search.png"> </button>  
 </div>
 </div>
 
-
-
- 
-<!-- <span class ="radioClass"> Total Details: {{total}} </span> -->
+<app-table-generic [productSpi]="filterSpirit" (clickOnProduct)="deleteRow($event)"  ></app-table-generic>

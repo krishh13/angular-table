@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { initDomAdapter } from '@angular/platform-browser/src/browser';
 
 
 @Component({
@@ -8,36 +9,133 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class PaginationComponent implements OnInit {
 
-  hidden = true;
-  // currentPage = 1;
-  // previousPage = 0;
-  // nextPage = 0;
+   hidden = true;
+   pages = 4;
+   pageSize = 20;
+   pageNumber = 0;
+   currentIndex = 1;
+   filterSpirit: ProductType[];
+   pagesIndex: Array<number>;
+   pageStart = 1;
 
   @Input() productSpirit: ProductType[];
-  @Input() totalRecords: number;
+  // @Output() searchData = new EventEmitter();
+  // @Output() selectedList = new EventEmitter();
   @Input() currentRecords: any;
-  @Output() searchData = new EventEmitter();
-  @Output() selectedList = new EventEmitter();
+  @Input() totalRecords: number;
 
-  showSelectedAmount(valu) {
-    console.log(valu);
-    this.selectedList.emit(valu);
+  constructor() {
+    this.filterSpirit = this.productSpirit;
   }
-  // @Input() recordsPerPage = 50;
-  // pageData = this.productSpirit ;
-  // setActivePaginationPage(value) {
-  //   this.currentPage = value;
-  //   this.previousPage = this.currentPage - 1 ;
-  //   this.nextPage = this.currentPage + 1;
-  //   this.pageData = this.productSpirit.slice(this.previousPage * this.recordsPerPage , this.currentPage * this.recordsPerPage); 
+
+  ngOnInit() {
+    this.currentIndex = 1;
+    this.pageStart = 1;
+    this.pages = 4;
+
+    this.pageNumber = this.productSpirit.length / this.pageSize;
+
+    if (this.productSpirit.length % this.pageSize !== 0) {
+       this.pageNumber ++;
+    }
+
+    if (this.pageNumber  < this.pages) {
+          this.pages =  this.pageNumber;
+    }
+
+    this.refreshItems();
+
+    console.log('this.pageNumber :' + this.pageNumber);
+}
+
+
+  // Delete selected row
+    deleteRow(value) {
+       this.productSpirit.splice(value, 1);
+       this.filterSpirit = this.productSpirit;
+    }
+
+
+    // Showing selected list of data
+    showSelectedAmount(vale) {
+      console.log(vale);
+      this.filterSpirit = this.productSpirit;
+      // let selection: any = this.filterSpirit.slice(0,vale);
+      // this.filterSpirit = selection;
+      // return this.filterSpirit;
+      this.filterSpirit = this.filterSpirit.filter((filterSpirit, idx) => idx < vale);
+    }
+
+// Search the data on Input value
+  searchInput(val: any) {
+  this.filterSpirit = this.productSpirit.filter((x) => {
+    const filter = Object.keys(x);
+    return filter.some(element => x[element].toString().toLowerCase().trim().indexOf(val.toString().toLowerCase().trim()) !== -1);
+    });
+//   console.log(val);
+//   if (!val) {
+//    this.filterSpirit = this.spiritProducts;
+//   } else {
+//       this.filterSpirit = this.spiritProducts.filter((x) => {
+//       const filter = Object.keys(x);
+//       return filter.some(element => x[element].toString().toLowerCase().trim().indexOf(val.toString().toLowerCase().trim()) !== -1);
+//       });
+// }
+}
+
+   fillArray(): any {
+      // this.myinput = !this.myinput;
+      const obj = new Array();
+      for ( let index = this.pageStart; index < this.pageStart + this.pages; index ++) {
+                  obj.push(index);
+      }
+      return obj;
+   }
+
+ refreshItems() {
+               this.filterSpirit = this.productSpirit.slice((this.currentIndex - 1) * this.pageSize, (this.currentIndex) * this.pageSize);
+               this.pagesIndex =  this.fillArray();
+               console.log(this.filterSpirit);
+   }
+
+   prevPage() {
+      if (this.currentIndex > 1) {
+         this.currentIndex --;
+      }
+      if (this.currentIndex < this.pageStart) {
+         this.pageStart = this.currentIndex;
+      }
+      this.refreshItems();
+   }
+   nextPage() {
+      if (this.currentIndex < this.pageNumber) {
+            this.currentIndex ++;
+      }
+      if (this.currentIndex >= (this.pageStart + this.pages)) {
+         this.pageStart = this.currentIndex - this.pages + 1;
+      }
+      this.refreshItems();
+   }
+    setPage(index: number) {
+         this.currentIndex = index;
+         this.refreshItems();
+    }
+
+
+
+// Showing selected list of data/output event
+  // showSelectedAmount(valu) {
+  //  console.log(valu);
+  //  this.selectedList.emit(valu);
   // }
 
-  sendSearch(val) {
-    console.log(val);
-    this.searchData.emit(val);
-  }
+  // Search the data on Input value/output event
+  // sendSearch(val) {
+  //   console.log(val);
+  //   this.searchData.emit(val);
+  // }
 
-
+  // Hide and seek input search
   displaySearch(): void {
     this.hidden = !this.hidden;
     // if (this.hidden === 'none') {
@@ -46,11 +144,17 @@ export class PaginationComponent implements OnInit {
     //   this.hidden = 'none'; }
 }
 
-  constructor() { }
 
-  ngOnInit() {
 
-  }
+//   recordsPerP(valr) {
+//   this.limit.emit(valr);
+// }
+
+
+//   ngOnInit() {
+//     this.filterSpirit = this.productSpirit;
+// }
+
 }
 
 export interface ProductType {
